@@ -11,7 +11,7 @@ const dateHistogram = (el, data, width, height) => {
             top: 30,
             right: 10,
             bottom: 50,
-            left: 50,
+            left: 50
         }
     };
 
