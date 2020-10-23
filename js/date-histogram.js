@@ -57,28 +57,14 @@ const dateHistogram = (el, data, width, height) => {
         .tickFormat(d => d);
     yAxisGroup.call(yAxisCall);
 
-    // JOIN new data with old elements.
-    var rects = bounds.selectAll('rect')
-        .data(data);
-
-    // EXIT old elements not present in new data.
-    rects.exit().remove();
-
-    // UPDATE old elements present in new data.
-    rects
+    bounds.selectAll('rect')
+        .data(data)
+        .join('rect')
         .attr('y', d => yScale(yAccessor(d)))
         .attr('x', d => xScale(xAccessor(d)))
         .attr('height', d => dimensions.boundedHeight - yScale(yAccessor(d)))
-        .attr('width', xScale.bandwidth);
-
-    // ENTER new elements present in new data.
-    rects.enter()
-        .append('rect')
-            .attr('y', d => yScale(yAccessor(d)))
-            .attr('x', d => xScale(xAccessor(d)))
-            .attr('height', d => dimensions.boundedHeight - yScale(yAccessor(d)))
-            .attr('width', xScale.bandwidth)
-            .attr('fill', 'lightseagreen');
+        .attr('width', xScale.bandwidth)
+        .attr('fill', 'lightseagreen');
 };
 
 export default dateHistogram;
