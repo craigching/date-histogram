@@ -1,0 +1,39 @@
+{
+    "buckets": [
+    {
+        "key_as_string": "3:30:00",
+        "key": 1586705400000,
+        "doc_count": 13432
+    },
+    {
+        "key_as_string": "3:31:00",
+        "key": 1586705460000,
+        "doc_count": 19342
+    },
+    {
+        "key_as_string": "3:32:00",
+        "key": 1586705520000,
+        "doc_count": 17443
+    },
+    {
+        "key_as_string": "3:33:00",
+        "key": 1586705580000,
+        "doc_count": 26342
+    },
+    {
+        "key_as_string": "3:34:00",
+        "key": 1586705640000,
+        "doc_count": 34213
+    },
+    {
+        "key_as_string": "3:35:00",
+        "key": 1586705700000,
+        "doc_count": 50321
+    },
+    {
+        "key_as_string": "3:36:00",
+        "key": 1586705760000,
+        "doc_count": 54273
+    }
+]
+}
