@@ -1,7 +1,12 @@
 
 const dateHistogram = (props) => {
 
-    const {container, data, width, height} = props;
+    const {
+        container,
+        data,
+        width: svgWidth,
+        height: svgHeight
+    } = props;
 
     console.log(data);
 
@@ -9,7 +14,7 @@ const dateHistogram = (props) => {
     const xAccessor = d => d.date;
 
     let dimensions = {
-        width: width, height: height, margin: {
+        width: svgWidth, height: svgHeight, margin: {
             top: 30,
             right: 10,
             bottom: 50,
