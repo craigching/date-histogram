@@ -1,0 +1,19 @@
+{
+  "name": "date-histogram",
+  "version": "0.0.1",
+  "description": "An example of a date histogram d3 component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Craig L. Ching",
+  "license": "MIT",
+  "dependencies": {
+    "d3-array": "^2.8.0",
+    "d3-axis": "^2.0.0",
+    "d3-fetch": "^2.0.0",
+    "d3-interpolate": "^2.0.1",
+    "d3-scale": "^3.2.3",
+    "d3-selection": "^2.0.0"
+  }
+}
