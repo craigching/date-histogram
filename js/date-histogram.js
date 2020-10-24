@@ -14,9 +14,6 @@ const dateHistogram = (props) => {
     const width = svgWidth - margin.left - margin.right;
     const height = svgHeight - margin.top - margin.bottom;
 
-    const yAccessor = d => d.count;
-    const xAccessor = d => d.date;
-
     const wrapper = d3.select(container)
         .append('svg')
         .attr('width', svgWidth)
@@ -25,8 +22,11 @@ const dateHistogram = (props) => {
     const bounds = wrapper.append('g')
         .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
+    const yAccessor = d => d.count;
+    const xAccessor = d => d.date;
+
     const xScale = d3.scaleBand()
-        .domain(data.map(d => d.date))
+        .domain(data.map(xAccessor))
         .range([0, width])
         .padding(0.05);
 
