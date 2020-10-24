@@ -1,5 +1,7 @@
 
-const dateHistogram = (el, data, width, height) => {
+const dateHistogram = (props) => {
+
+    const {container, data, width, height} = props;
 
     console.log(data);
 
