@@ -1,8 +1,8 @@
-import dateHistogram from './date-histogram.js';
+import dateHistogram from './components/date-histogram/date-histogram.js';
 
 const main = async () => {
     const container = d3.select('#container');
-    const response = await d3.json('data/buckets.json');
+    const response = await d3.json('../data/buckets.json');
 
     console.log('main: container', container);
 
