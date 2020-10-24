@@ -14,12 +14,11 @@ const dateHistogram = (props) => {
     const width = svgWidth - margin.left - margin.right;
     const height = svgHeight - margin.top - margin.bottom;
 
-    const wrapper = d3.select(container)
+    const bounds = d3.select(container)
         .append('svg')
         .attr('width', svgWidth)
-        .attr('height', svgHeight);
-
-    const bounds = wrapper.append('g')
+        .attr('height', svgHeight)
+        .append('g')
         .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
     const yAccessor = d => d.count;
