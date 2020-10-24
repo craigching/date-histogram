@@ -5,7 +5,8 @@ const dateHistogram = (props) => {
         container,
         data,
         width: svgWidth,
-        height: svgHeight
+        height: svgHeight,
+        barColor = 'lightseagreen'
     } = props;
 
     const margin = { top: 30, right: 10, bottom: 50, left: 50 };
@@ -48,7 +49,7 @@ const dateHistogram = (props) => {
         .attr('x', d => xScale(xAccessor(d)))
         .attr('height', d => height - yScale(yAccessor(d)))
         .attr('width', xScale.bandwidth)
-        .attr('fill', 'lightseagreen');
+        .attr('fill', barColor);
 };
 
 export default dateHistogram;
