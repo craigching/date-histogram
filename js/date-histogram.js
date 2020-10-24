@@ -10,7 +10,7 @@ const dateHistogram = (props) => {
 
     console.log(data);
 
-    const margin = {top: 30, right: 10, bottom: 50, left: 50};
+    const margin = { top: 30, right: 10, bottom: 50, left: 50 };
     const width = svgWidth - margin.left - margin.right;
     const height = svgHeight - margin.top - margin.bottom;
 
@@ -19,11 +19,11 @@ const dateHistogram = (props) => {
 
     const wrapper = d3.select(container)
         .append('svg')
-        .attr('width', width)
-        .attr('height', height);
+        .attr('width', svgWidth)
+        .attr('height', svgHeight);
 
     const bounds = wrapper.append('g')
-        .style('transform', `translate(${margin.left}, ${margin.top})`);
+        .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
     const xScale = d3.scaleBand()
         .domain(data.map(d => d.date))
@@ -36,17 +36,13 @@ const dateHistogram = (props) => {
 
     const xAxisGroup = bounds.append('g')
         .attr('class', 'x axis')
-        .attr('transform', `translate(0, ${height})`);
+        .attr('transform', `translate(0, ${height})`)
+        .call(d3.axisBottom(xScale));
 
     const yAxisGroup = bounds.append('g')
-        .attr('class', 'y axis');
-
-    const xAxisCall = d3.axisBottom(xScale);
-    xAxisGroup.call(xAxisCall);
-
-    const yAxisCall = d3.axisLeft(yScale)
-        .tickFormat(d => d);
-    yAxisGroup.call(yAxisCall);
+        .attr('class', 'y axis')
+        .call(d3.axisLeft(yScale)
+            .tickFormat(d => d));
 
     bounds.selectAll('rect')
         .data(data)
