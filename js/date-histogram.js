@@ -8,8 +8,6 @@ const dateHistogram = (props) => {
         height: svgHeight
     } = props;
 
-    console.log(data);
-
     const margin = { top: 30, right: 10, bottom: 50, left: 50 };
     const width = svgWidth - margin.left - margin.right;
     const height = svgHeight - margin.top - margin.bottom;
