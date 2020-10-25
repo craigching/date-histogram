@@ -22,10 +22,14 @@ const dateHistogram = (props) => {
         .append('g')
         .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
-    const xScale = d3.scaleBand()
+    const xBarScale = d3.scaleBand()
         .domain(data.map(xAccessor))
         .range([0, width])
         .padding(0.05);
+
+    const xTicksScale = d3.scaleTime()
+        .domain(d3.extent(data, xAccessor))
+        .range([0, width]);
 
     const yScale = d3.scaleLinear()
         .domain([0, d3.max(data, yAccessor)])
@@ -34,7 +38,9 @@ const dateHistogram = (props) => {
     const xAxisGroup = bounds.append('g')
         .attr('class', 'x axis')
         .attr('transform', `translate(0, ${height})`)
-        .call(d3.axisBottom(xScale));
+        .call(d3.axisBottom(xTicksScale)
+                .ticks(d3.timeMinute.every(60))
+                .tickPadding(0.05));
 
     const yAxisGroup = bounds.append('g')
         .attr('class', 'y axis')
@@ -45,9 +51,9 @@ const dateHistogram = (props) => {
         .data(data)
         .join('rect')
         .attr('y', d => yScale(yAccessor(d)))
-        .attr('x', d => xScale(xAccessor(d)))
+        .attr('x', d => xTicksScale(xAccessor(d)))
         .attr('height', d => height - yScale(yAccessor(d)))
-        .attr('width', xScale.bandwidth)
+        .attr('width', xBarScale.bandwidth)
         .attr('fill', barColor);
 };
 
