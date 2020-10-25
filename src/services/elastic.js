@@ -1,5 +1,8 @@
 
-const logs = () => {
+const logs = (after, before) => {
+    const formatTime = d3.timeFormat('%Y-%m-%dT%H:%M:%S.%L%Z');
+    const afterStr = formatTime(after);
+    const beforeStr = formatTime(before);
     const request = {
         "aggs": {
           "2": {
@@ -21,8 +24,8 @@ const logs = () => {
               {
                 "range": {
                   "timestamp": {
-                    "gte": "2020-10-23T15:23:16.916Z",
-                    "lte": "2020-10-24T15:23:16.917Z",
+                    "gte": afterStr,
+                    "lte": beforeStr,
                     "format": "strict_date_optional_time"
                   }
                 }

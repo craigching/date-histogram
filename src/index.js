@@ -7,7 +7,12 @@ const main = async () => {
     // const response = await d3.json('../data/buckets.json');
     // const data = response.buckets;
 
-    const response = await logs();
+    const parseTime = d3.timeParse('%Y-%m-%dT%H:%M:%S.%L%Z');
+    const afterStr = '2020-10-23T00:00:00.000-05:00';
+    const beforeStr = '2020-10-24T00:00:00.000-05:00';
+    const after = parseTime(afterStr);
+    const before = parseTime(beforeStr);
+    const response = await logs(after, before);
     const data = response.data.aggregations['2'].buckets;
 
     console.log('data', data);
