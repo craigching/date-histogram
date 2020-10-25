@@ -53,7 +53,7 @@ const dateHistogram = (props) => {
         .attr('y', d => yScale(yAccessor(d)))
         .attr('x', d => xTicksScale(xAccessor(d)))
         .attr('height', d => height - yScale(yAccessor(d)))
-        .attr('width', xBarScale.bandwidth)
+        .attr('width', xBarScale.bandwidth())
         .attr('fill', barColor);
 };
 
