@@ -3,9 +3,11 @@ const dateHistogram = (props) => {
 
     const {
         container,
-        data,
         width: svgWidth,
         height: svgHeight,
+        data,
+        xAccessor = d => d.date,
+        yAccessor = d => d.count,
         barColor = 'lightseagreen'
     } = props;
 
@@ -19,9 +21,6 @@ const dateHistogram = (props) => {
         .attr('height', svgHeight)
         .append('g')
         .attr('transform', `translate(${margin.left}, ${margin.top})`);
-
-    const yAccessor = d => d.count;
-    const xAccessor = d => d.date;
 
     const xScale = d3.scaleBand()
         .domain(data.map(xAccessor))

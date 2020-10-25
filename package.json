@@ -9,11 +9,13 @@
   "author": "Craig L. Ching",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.0",
     "d3-array": "^2.8.0",
     "d3-axis": "^2.0.0",
     "d3-fetch": "^2.0.0",
     "d3-interpolate": "^2.0.1",
     "d3-scale": "^3.2.3",
-    "d3-selection": "^2.0.0"
+    "d3-selection": "^2.0.0",
+    "d3-time-format": "^3.0.0"
   }
 }

@@ -1,23 +1,27 @@
 import dateHistogram from './components/date-histogram/date-histogram.js';
+import logs from './services/elastic.js';
 
 const main = async () => {
     const container = d3.select('#container');
-    const response = await d3.json('../data/buckets.json');
 
-    console.log('main: container', container);
+    // const response = await d3.json('../data/buckets.json');
+    // const data = response.buckets;
 
-    const data = response.buckets.map(d => {
-        return {
-            date: new Date(d.key),
-            count: d.doc_count
-        };
-    });
+    const response = await logs();
+    const data = response.data.aggregations['2'].buckets;
+
+    console.log('data', data);
+
+    const xAccessor = d => new Date(d.key);
+    const yAccessor = d => d.doc_count;
 
     const props = {
         container: container.nodes()[0],
+        width: 1200,
+        height: 200,
         data: data,
-        width: 800,
-        height: 600
+        xAccessor: xAccessor,
+        yAccessor: yAccessor
     }
 
     dateHistogram(props);
