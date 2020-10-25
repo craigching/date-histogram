@@ -1,5 +1,5 @@
 
-const logs = (after, before) => {
+const logs = (after, before, interval) => {
     const formatTime = d3.timeFormat('%Y-%m-%dT%H:%M:%S.%L%Z');
     const afterStr = formatTime(after);
     const beforeStr = formatTime(before);
@@ -8,7 +8,7 @@ const logs = (after, before) => {
           "2": {
             "date_histogram": {
               "field": "timestamp",
-              "fixed_interval": "30m",
+              "fixed_interval": interval,
               "time_zone": "America/Chicago",
               "min_doc_count": 0
             }
